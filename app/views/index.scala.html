@@ -1,0 +1,11 @@
+@(message: String)
+
+@main("Welcome to Play 2.1") {
+    
+   <p class="text-info">Hello and welcome to  @message</p>
+    
+    <p>
+		<a class="btn btn-large btn-primary" type="button" href="@routes.Application.login">Log in</a> or
+		<a class="btn btn-large btn-success" type="button" href="@routes.Application.register">Sign up</a>
+</p>
+}

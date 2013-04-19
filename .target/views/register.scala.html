@@ -1,0 +1,36 @@
+@(registrationForm: Form[models.User])
+@import helper._
+
+@main("Lemonade-registration") {
+  <div class="row">
+  <div class="span6">
+  
+   <p class="text-info">Register to Lemonade</p>
+   
+    <form class="form-signin" action="@routes.Application.register" method="post">
+    
+        <label for="name">Name:</label>
+        <input type="text" class="input-medium" placeholder="Name" name="name">
+        @if(registrationForm.error("name")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(registrationForm.error("name").message,registrationForm.error("name").arguments())</small></p></span>  }  
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="input-medium" placeholder="Last Name" name="lastName">
+        @if(registrationForm.error("lastName")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(registrationForm.error("lastName").message,registrationForm.error("lastName").arguments())</small></p></span>  }
+        <label for="lastName">Email:</label>
+        <input type="email" class="input-medium" placeholder="Email" name="email">
+        @if(registrationForm.error("email")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(registrationForm.error("email").message)</small></p></span>  }
+        <label for="lastName">Password:</label>
+        <input type="password" class="input-medium" placeholder="Password" name="password">
+        @if(registrationForm.error("password")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(registrationForm.error("password").message,registrationForm.error("password").arguments())</small></p></span>  }
+        <label for="lastName">Repeat Password:</label>
+        <input type="password" class="input-medium" placeholder="Password" name="repeatPassword">
+        @if(registrationForm.error("repeatPassword")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(registrationForm.error("repeatPassword").message)</small></p></span>  }<br/>
+        <button class="btn btn-large btn-primary" type="submit">Register</button>      
+      </form>
+      </div>
+      </div>
+}
