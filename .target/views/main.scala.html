@@ -30,9 +30,11 @@
           </button>
           <a class="brand" href="/">LEMONADE</a>
           <div class="nav-collapse collapse">
+          @if(session().get("email")!=null){
             <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">Username</a>
-            </p>
+              Logged in as <a href="#" class="navbar-link">@session().get("email")</a>
+            <a href="/logout" class="btn">logout</a></p>
+            }
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">About</a></li>
@@ -70,6 +72,13 @@
      <div class="span7">
     	    <div class="container">
           <div class="hero-unit">
+          <p class="text-error">
+          @flash.get("error")
+          </p>
+          
+           <p class="text-info">
+          @flash.get("success")
+          </p>
         
              @content
           </div>

@@ -26,10 +26,14 @@ public class Application extends Controller {
     public static Result authenticate(){
     	String email =Form.form().bindFromRequest().get("email");
     	String password = Form.form().bindFromRequest().get("password");
-    	flash().put("error", "Username or password incorrect");
+    	User user = User.authenticate(email, password);
+    	if(user ==null){
+    		flash().put("error", "Username or password incorrect");
+    		return badRequest(views.html.login.login.render("Please Login"));
+    	} 	
     	session().clear();
         session("email",email);
-    	return redirect(routes.Application.login());
+        return redirect(routes.Dashboard.firstTime());
     }
     
     public static Result register(){
@@ -58,7 +62,15 @@ public class Application extends Controller {
     	User.createUser(form.get());
     	final Body body = new Body("this is a text",views.html.email.welcome.render().toString());
     	Mailer.getDefaultMailer().sendMail("Subject - you have Uris app", body, form.get().email);
-    	return ok("yeah");
+    	session().clear();
+        session("email",form.get().email);
+    	return redirect(routes.Dashboard.firstTime());
+    }
+    
+    public static Result logout(){
+    	flash().put("success", "logged out successfully");
+    	session().clear();
+    	return redirect(routes.Application.index());
     }
   
 }

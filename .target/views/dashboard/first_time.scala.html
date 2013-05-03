@@ -1,0 +1,42 @@
+@(businessForm: Form[models.Business])
+@import helper._
+
+@main("Lemonade-business data") {
+  <div class="row">
+  <div class="span6">
+  
+   <p class="text-info">Fill your business data</p>
+   
+    <form class="form-signin" action="@routes.Dashboard.saveBusiness" method="post">
+    
+        <label for="rnc">RNC:</label>
+        <input type="text" class="input-medium" placeholder="RNC" name="rnc">
+        @if(businessForm.error("rnc")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(businessForm.error("rnc").message,businessForm.error("rnc").arguments())</small></p></span>  }  
+        <label for="businessName">Business Name:</label>
+        <input type="text" class="input-medium" placeholder="Business Name" name="businessName">
+        @if(businessForm.error("businessName")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(businessForm.error("businessName").message,businessForm.error("businessName").arguments())</small></p></span>  }
+        <label for="address">Address:</label>
+        <input type="text" class="input-medium" placeholder="Address" name="address">
+        @if(businessForm.error("address")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(businessForm.error("address").message)</small></p></span>  }
+        <label for="phoneNumber">Phone number:</label>
+        <input type="text" class="input-medium" placeholder="Phone number" name="phoneNumber">
+        @if(businessForm.error("phoneNumber")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(businessForm.error("phoneNumber").message,businessForm.error("phoneNumber").arguments())</small></p></span>  }
+        <label for="email">Business Email:</label>
+        <input type="email" class="input-medium" placeholder="email" name="email">
+        @if(businessForm.error("email")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(businessForm.error("email").message)</small></p></span>  }
+        <label for="startDate">Starting date:</label>
+        <input type="text" class="input-medium" placeholder="business starting date" name="startDate">
+        @if(businessForm.error("startDate")!=null) {  
+        <span class="help-inline"><p class="text-error"><small>@Messages(businessForm.error("startDate").message,businessForm.error("rnc").arguments())</small></p></span>  }  
+        
+        <br/>
+        <button class="btn btn-large btn-primary" type="submit">Register</button>      
+      </form>
+      </div>
+      </div>
+}
