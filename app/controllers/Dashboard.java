@@ -23,5 +23,11 @@ public class Dashboard extends Controller {
 		flash().put("success", "The information was saved");
 		return redirect(routes.Dashboard.index());
 	}
+	
+	public static Result uploadPicture(){
+		flash().put("success", "Picture loaded");
+		return ok(views.html.dashboard.first_time.render(Form.form(Business.class)));
+	}
+	
 
 }

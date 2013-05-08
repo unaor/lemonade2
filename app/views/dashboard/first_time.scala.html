@@ -2,6 +2,7 @@
 @import helper._
 
 @main("Lemonade-business data") {
+<script type="text/javascript" src="@routes.Assets.at("javascripts/bootstrap-modal.min.js")"></script>
   <div class="row">
   <div class="span6">
   
@@ -37,6 +38,26 @@
         <br/>
         <button class="btn btn-large btn-primary" type="submit">Register</button>      
       </form>
+
+
+<a href="#myModal" role="button" class="btn" data-toggle="modal">Upload your logo</a>
+
+
+<div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Select a picture - you can resize it</h3>
+  </div>
+  <div class="modal-body">
+    @uploadPicture()
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save changes</button>
+  </div>
+</div>
+
+
       </div>
       </div>
 }
